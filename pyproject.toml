@@ -3,11 +3,11 @@ requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
 [tool.flit.metadata]
-module = "mdformat_plugin"
-author = "Chris Sewell"
-author-email = "executablebooks@gmail.com"
+module = "mdformat_frontmatter"
+author = "Chris Butler"
+author-email = "chris@thebutlers.me"
 description-file = "README.md"
-home-page = "https://github.com/executablebooks/mdformat-plugin"
+home-page = "https://github.com/executablebooks/mdformat-frontmatter"
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
@@ -25,12 +25,12 @@ requires=["mdformat>=0.6.1",
 test = [
     "pytest~=6.0",
     "coverage",
-    "pytest-cov",
+    "pytest-cov"
 ]
 dev = ["pre-commit"]
 
 [tool.flit.entrypoints."mdformat.parser_extension"]
-plugin = "mdformat_plugin"
+plugin = "mdformat_frontmatter"
 
 [tool.flit.sdist]
 include = []
@@ -44,7 +44,7 @@ force_sort_within_sections = true
 no_lines_before = ["LOCALFOLDER"]
 
 # Configure isort to work without access to site-packages
-known_first_party = ["mdformat_plugin", "tests"]
+known_first_party = ["mdformat_frontmatter", "tests"]
 
 # Settings for Black compatibility
 profile = "black"
