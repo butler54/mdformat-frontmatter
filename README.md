@@ -1,14 +1,19 @@
-# mdformat-plugin
+# mdformat-frontmatter
 
 [![Build Status][ci-badge]][ci-link]
 [![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for...
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for ensuring that yaml frontmatter is respected. As we are unable 
+to tell the intent of a user if the yaml is incorrectly formatted it will trigger an exception.
+
+This package was built from the [template](https://github.com/executablebooks/mdformat-plugin) provided by [executable books](https://github.com/executablebooks) and customized (specifically to separate content PR's from the release cycle).
+
+
 
 ## Development
 
-This package utilises [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
+This package dirver [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
 
 To install these development dependencies:
 
@@ -62,9 +67,9 @@ or trigger the GitHub Action job, by creating a release with a tag equal to the 
 
 Note, this requires generating an API key on PyPi and adding it to the repository `Settings/Secrets`, under the name `PYPI_KEY`.
 
-[ci-badge]: https://github.com/executablebooks/mdformat-plugin/workflows/CI/badge.svg?branch=master
-[ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush
-[cov-badge]: https://codecov.io/gh/executablebooks/mdformat-plugin/branch/master/graph/badge.svg
-[cov-link]: https://codecov.io/gh/executablebooks/mdformat-plugin
-[pypi-badge]: https://img.shields.io/pypi/v/mdformat-plugin.svg
-[pypi-link]: https://pypi.org/project/mdformat-plugin
+[ci-badge]: https://github.com/butler54/mdformat-frontmatter/workflows/CI/badge.svg?branch=master
+[ci-link]: https://github.com/butler54/mdformat-frontmatter/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush
+[cov-badge]: https://codecov.io/gh/butler54/mdformat-frontmatter/branch/master/graph/badge.svg
+[cov-link]: https://codecov.io/gh/butler54/mdformat-frontmatter
+[pypi-badge]: https://img.shields.io/pypi/v/mdformat-frontmatter.svg
+[pypi-link]: https://pypi.org/project/mdformat-frontmatter

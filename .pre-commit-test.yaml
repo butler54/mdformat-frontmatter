@@ -8,4 +8,4 @@ repos:
       types: [markdown]
       language: system
       additional_dependencies:
-        - mdformat-plugin
+        - mdformat-frontmatter
