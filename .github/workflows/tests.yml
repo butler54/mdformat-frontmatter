@@ -71,7 +71,6 @@ jobs:
         pip install .
 
     - name: run pre-commit with plugin
-      continue-on-error: true
       run: |
         pre-commit run --config .pre-commit-test.yaml --all-files --verbose --show-diff-on-failure
 
