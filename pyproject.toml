@@ -17,7 +17,6 @@ classifiers = [
 keywords = "mdformat,markdown,markdown-it"
 
 requires-python=">=3.6"
-# requires=["mdformat ~=0.3.1"]
 requires=["mdformat >=0.5.3,<0.6.0",
           "mdit-py-plugins"
             ]
