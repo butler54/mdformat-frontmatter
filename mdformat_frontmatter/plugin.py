@@ -4,6 +4,13 @@ from markdown_it import MarkdownIt
 from markdown_it.token import Token
 from mdformat.renderer import MDRenderer
 from mdit_py_plugins.front_matter import front_matter_plugin
+from yaml import dump, load
+
+try:
+    from yaml import CDumper as Dumper
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Dumper, Loader
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
@@ -22,17 +29,12 @@ def render_token(
 
     :returns: (text, index) where index is of the final "consumed" token
     """
-    return None
-    if tokens[index].type != "front_matter":
+    token = tokens[index]
+    if token.type != "front_matter":
         return None
-    else:
-        return None
-    if tokens[index].type != "front_matter":
-        return None
-    print(tokens[index])
-    content = ""
-    while index < len(tokens) and tokens[index].type == "front_matter":
-        # Not sure
-
-        index += 1
+    index
+    # Safety check - parse and dump yaml to ensure it is correctly formatted
+    yamled = load(token.content, Loader=Loader)
+    serialized = dump(yamled, Dumper=Dumper)
+    content = token.markup + "\n" + serialized + token.markup + "\n"
     return content, index
