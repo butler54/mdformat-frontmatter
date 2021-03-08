@@ -7,7 +7,7 @@ module = "mdformat_frontmatter"
 author = "Chris Butler"
 author-email = "chris@thebutlers.me"
 description-file = "README.md"
-home-page = "https://github.com/executablebooks/mdformat-frontmatter"
+home-page = "https://github.com/butler54/mdformat-frontmatter"
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
@@ -17,7 +17,8 @@ classifiers = [
 keywords = "mdformat,markdown,markdown-it"
 
 requires-python=">=3.6"
-requires=["mdformat>=0.6.1",
+# requires=["mdformat ~=0.3.1"]
+requires=["mdformat >=0.5.3,<0.6.0",
           "mdit-py-plugins"
             ]
 
@@ -30,7 +31,7 @@ test = [
 dev = ["pre-commit"]
 
 [tool.flit.entrypoints."mdformat.parser_extension"]
-plugin = "mdformat_frontmatter"
+frontmatter = "mdformat_frontmatter"
 
 [tool.flit.sdist]
 include = []
