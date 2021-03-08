@@ -10,7 +10,6 @@ def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser, e.g. by adding a plugin: `mdit.use(myplugin)`"""
     mdit.use(front_matter_plugin)
 
-
 def render_token(
     renderer: MDRenderer,
     tokens: List[Token],
@@ -22,6 +21,11 @@ def render_token(
 
     :returns: (text, index) where index is of the final "consumed" token
     """
+    return None
+    if tokens[index].type != "front_matter": 
+        return None
+    else:
+        return None
     if tokens[index].type != "front_matter": 
         return None
     print(tokens[index])

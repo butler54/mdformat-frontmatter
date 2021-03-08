@@ -12,6 +12,6 @@ fixtures = read_fixture_file(FIXTURE_PATH)
     "line,title,text,expected", fixtures, ids=[f[1] for f in fixtures]
 )
 def test_fixtures(line, title, text, expected):
-    output = render_text(text, extensions={"plugin"})
+    output = render_text(text, extensions={"frontmatter"})
     print(output)
     assert output.rstrip() == expected.rstrip(), output

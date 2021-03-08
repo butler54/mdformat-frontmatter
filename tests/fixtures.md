@@ -11,14 +11,14 @@ another test
 .
 Some *markdown*
 
-* a
-* b
-- c
+- a
+- b
+* c
 .
 Some *markdown*
 
-* a
-* b
+- a
+- b
 
-- c
+* c
 .
