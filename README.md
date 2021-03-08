@@ -4,7 +4,7 @@
 [![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for ensuring that yaml frontmatter is respected. As we are unable 
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for ensuring that yaml frontmatter is respected. As we are unable
 to tell the intent of a user if the yaml is incorrectly formatted it will trigger an exception.
 
 This package was built from the [template](https://github.com/executablebooks/mdformat-plugin) provided by [executable books](https://github.com/executablebooks) and customized (specifically to separate content PR's from the release cycle).
