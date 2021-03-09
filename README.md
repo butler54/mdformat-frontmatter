@@ -4,16 +4,32 @@
 [![codecov.io][cov-badge]][cov-link]
 [![PyPI version][pypi-badge]][pypi-link]
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for ensuring that yaml frontmatter is respected. As we are unable
-to tell the intent of a user if the yaml is incorrectly formatted it will trigger an exception.
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for ensuring that yaml `front-matter` is respected.
+Many tools (such as [jekyll](https://github.com/jekyll/jekyll)) use yaml front matter for automation purposes.
+`mdformat-frontmatter` only supports yaml. For example:
 
-This package was built from the [template](https://github.com/executablebooks/mdformat-plugin) provided by [executable books](https://github.com/executablebooks) and customized (specifically to separate content PR's from the release cycle).
+```markdown
 
+---
+test: yaml
+---
+# This looks okay
+For some markdown code.
+```
 
+Frontmatter can only be at the first line or two of the code.
+```markdown
+# This is not
+---
+test: yaml
+---
+```
+Note: that at this stage this plugin is not that sophisticated. The principle objective is to allow properly formed yaml header blocks to pass through.
+Incorrectly formed blocks may result in strange behaviour.
 
 ## Development
-
-This package dirver [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
+This package was built from the [template](https://github.com/executablebooks/mdformat-plugin) provided by [executable books](https://github.com/executablebooks) and customized (specifically to separate content PR's from the release cycle).
+This package driver [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
 
 To install these development dependencies:
 
