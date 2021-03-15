@@ -2,9 +2,10 @@ from typing import List, Optional, Tuple
 
 from markdown_it import MarkdownIt
 from markdown_it.token import Token
+import mdformat.renderer
 from mdformat.renderer import MDRenderer
 from mdit_py_plugins.front_matter import front_matter_plugin
-from yaml import dump, load
+from yaml import YAMLError, dump, load
 
 try:
     from yaml import CDumper as Dumper
@@ -32,9 +33,14 @@ def render_token(
     token = tokens[index]
     if token.type != "front_matter":
         return None
-    index
     # Safety check - parse and dump yaml to ensure it is correctly formatted
-    yamled = load(token.content, Loader=Loader)
-    serialized = dump(yamled, Dumper=Dumper)
-    content = token.markup + "\n" + serialized + token.markup + "\n"
+    try:
+        yamled = load(token.content, Loader=Loader)
+        serialized = dump(yamled, Dumper=Dumper)
+        content = token.markup + "\n" + serialized + token.markup + "\n"
+    except YAMLError:
+        mdformat.renderer.LOGGER.warning("Invalid YAML in a front matter block")
+
+        content = token.markup + "\n" + token.content + token.markup + "\n"
+
     return content, index
