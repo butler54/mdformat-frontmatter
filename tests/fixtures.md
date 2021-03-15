@@ -22,3 +22,36 @@ Some *markdown*
 
 * c
 .
+
+Test yaml header
+.
+---
+some: yaml
+---
+# Now some markdown
+And some more.
+.
+---
+some: yaml
+---
+# Now some markdown
+
+And some more.
+.
+
+Test yaml reformat
+.
+---
+some: yaml
+
+---
+# Now some markdown
+And some more.
+.
+---
+some: yaml
+---
+# Now some markdown
+
+And some more.
+.
