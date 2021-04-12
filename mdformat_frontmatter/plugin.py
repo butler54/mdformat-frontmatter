@@ -1,9 +1,9 @@
-from typing import List, Optional, Tuple
+from typing import Mapping, MutableMapping
 
 from markdown_it import MarkdownIt
-from markdown_it.token import Token
 import mdformat.renderer
-from mdformat.renderer import MDRenderer
+from mdformat.renderer import RenderTreeNode
+from mdformat.renderer.typing import RendererFunc
 from mdit_py_plugins.front_matter import front_matter_plugin
 from yaml import YAMLError, dump, load
 
@@ -19,28 +19,21 @@ def update_mdit(mdit: MarkdownIt) -> None:
     mdit.use(front_matter_plugin)
 
 
-def render_token(
-    renderer: MDRenderer,
-    tokens: List[Token],
-    index: int,
-    options: dict,
-    env: dict,
-) -> Optional[Tuple[str, int]]:
-    """Convert token(s) to a string, or return None if no render method available.
-
-    :returns: (text, index) where index is of the final "consumed" token
-    """
-    token = tokens[index]
-    if token.type != "front_matter":
-        return None
+def _render_frontmatter(
+    node: RenderTreeNode,
+    renderer_funcs: Mapping[str, RendererFunc],
+    options: Mapping,
+    env: MutableMapping,
+) -> str:
     # Safety check - parse and dump yaml to ensure it is correctly formatted
     try:
-        yamled = load(token.content, Loader=Loader)
-        serialized = dump(yamled, Dumper=Dumper)
-        content = token.markup + "\n" + serialized + token.markup + "\n"
+        yamled = load(node.content, Loader=Loader)
+        formatted_yaml = dump(yamled, Dumper=Dumper)
     except YAMLError:
         mdformat.renderer.LOGGER.warning("Invalid YAML in a front matter block")
+        formatted_yaml = node.content
 
-        content = token.markup + "\n" + token.content + token.markup + "\n"
+    return node.markup + "\n" + formatted_yaml + node.markup
 
-    return content, index
+
+RENDERER_FUNCS: Mapping[str, RendererFunc] = {"front_matter": _render_frontmatter}

@@ -34,6 +34,7 @@ And some more.
 ---
 some: yaml
 ---
+
 # Now some markdown
 
 And some more.
@@ -51,6 +52,7 @@ And some more.
 ---
 some: yaml
 ---
+
 # Now some markdown
 
 And some more.
