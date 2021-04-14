@@ -17,9 +17,9 @@ classifiers = [
 keywords = "mdformat,markdown,markdown-it"
 
 requires-python=">=3.6"
-requires=["mdformat >=0.6.0,<0.8.0",
+requires=["mdformat >=0.7.0,<0.8.0",
           "mdit-py-plugins",
-          "pyyaml"
+          "ruamel.yaml"
             ]
 
 [tool.flit.metadata.requires-extra]
