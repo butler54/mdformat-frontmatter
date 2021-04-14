@@ -25,7 +25,7 @@ def _render_frontmatter(node: RenderTreeNode, context: RenderContext) -> str:
         yaml.dump(parsed, stream=dump_stream)
     except ruamel.yaml.YAMLError as e:
         mdformat.renderer.LOGGER.warning(f"Invalid YAML in a front matter block: {e}.")
-        formatted_yaml = node.content
+        formatted_yaml = node.content + "\n"
     else:
         formatted_yaml = dump_stream.getvalue()
         # Remove the YAML closing tag if added by `ruamel.yaml`
