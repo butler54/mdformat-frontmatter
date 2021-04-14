@@ -8,6 +8,10 @@ from mdformat.renderer.typing import Render
 from mdit_py_plugins.front_matter import front_matter_plugin
 import ruamel.yaml
 
+yaml = ruamel.yaml.YAML()
+# Make sure to always have `sequence >= offset + 2`
+yaml.indent(mapping=2, sequence=4, offset=2)
+
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser, e.g. by adding a plugin: `mdit.use(myplugin)`"""
@@ -16,9 +20,6 @@ def update_mdit(mdit: MarkdownIt) -> None:
 
 def _render_frontmatter(node: RenderTreeNode, context: RenderContext) -> str:
     # Safety check - parse and dump yaml to ensure it is correctly formatted
-    yaml = ruamel.yaml.YAML()
-    # Make sure to always have `sequence >= offset + 2`
-    yaml.indent(mapping=2, sequence=4, offset=2)
     dump_stream = io.StringIO()
     try:
         parsed = yaml.load(node.content)
