@@ -27,6 +27,10 @@ def _render_frontmatter(node: RenderTreeNode, context: RenderContext) -> str:
     except Exception as e:
         mdformat.renderer.LOGGER.warning(f"Invalid YAML in a front matter block: {e}.")
         formatted_yaml = node.content
+    else:
+        # Remove the YAML closing tag if added by `ruamel.yaml`
+        if formatted_yaml.endswith("\n...\n"):
+            formatted_yaml = formatted_yaml[:-4]
 
     return node.markup + "\n" + formatted_yaml + node.markup
 
