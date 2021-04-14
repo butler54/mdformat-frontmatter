@@ -1,5 +1,5 @@
 """An mdformat plugin for parsing / ignoring frontmatter."""
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 from .plugin import RENDERER_FUNCS, update_mdit  # noqa: F401
