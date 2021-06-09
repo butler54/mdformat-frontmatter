@@ -57,3 +57,48 @@ some: yaml
 
 And some more.
 .
+
+CommonMark v0.29 spec example 66
+.
+---
+Foo
+---
+Bar
+---
+Baz
+.
+---
+Foo
+---
+
+## Bar
+
+Baz
+.
+
+CommonMark v0.29 spec example 68
+.
+---
+---
+.
+---
+null
+---
+.
+
+YAML parse error
+.
+---
+] This is a YAML parse error
+
+
+Dont format.
+---
+.
+---
+] This is a YAML parse error
+
+
+Dont format.
+---
+.
