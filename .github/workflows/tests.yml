@@ -96,7 +96,7 @@ jobs:
       env:
         PYPI_TOKEN: ${{ secrets.PYPI_KEY }}
         GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
-      run: semantic-release publish --minor
+      run: semantic-release publish --minor --verbose=DEBUG
   # publish:
   #   name: Publish to PyPi
   #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
