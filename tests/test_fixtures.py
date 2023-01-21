@@ -19,7 +19,7 @@ def test_fixtures(line, title, text, expected):
 
 
 def test_simple_md() -> None:
-    """Simple test of """
+    """Simple test of"""
     md_content = SIMPLE_MD_TEST_PATH.read_text()
     output = mdformat.text(md_content, extensions={"frontmatter"})
     print(output)
