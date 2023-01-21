@@ -54,3 +54,4 @@ version_variable = [
     'mdformat_frontmatter/__init__.py:__version__'
 ]
 build_command = 'flit build'
+branch = 'main'
