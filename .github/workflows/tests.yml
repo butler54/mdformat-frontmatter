@@ -13,25 +13,25 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.7
+        python-version: 3.9
     - uses: pre-commit/action@v3.0.0
 
   tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [3.6, 3.9, 3.11]  # alter to sweep currently GA'ed versions
+        python-version: [3.7, 3.9, 3.11]  # alter to sweep currently GA'ed versions
         os: [ubuntu-20.04, windows-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -58,9 +58,9 @@ jobs:
   pre-commit-hook:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: 3.9
 
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout source
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Set up Python 3.9
       uses: actions/setup-python@v1
       with:
