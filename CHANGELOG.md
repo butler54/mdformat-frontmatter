@@ -2,6 +2,9 @@
 
  <!--next-version-placeholder-->
 
+## v2.0.0 (2023-01-21)
+
+
 ## v1.0.0 (2023-01-21)
 ### Fix
 * Force a minor release ([`5eb8c5f`](https://github.com/butler54/mdformat-frontmatter/commit/5eb8c5f5ad1060e251f8fdeb23a9c5b5860b099f))
