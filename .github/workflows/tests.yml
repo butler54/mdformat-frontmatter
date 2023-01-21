@@ -97,8 +97,8 @@ jobs:
         PYPI_TOKEN: ${{ secrets.PYPI_KEY }}
         GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
       run: |
-	      git config --global user.name "semantic-release (via Github actions)"
-	      git config --global user.email "semantic-release@github-actions"
+        git config --global user.name "semantic-release (via Github actions)"
+        git config --global user.email "semantic-release@github-actions"
         semantic-release publish --verbosity=DEBUG
   # publish:
   #   name: Publish to PyPi
