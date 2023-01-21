@@ -48,3 +48,9 @@ known_first_party = ["mdformat_frontmatter", "tests"]
 
 # Settings for Black compatibility
 profile = "black"
+
+[tool.semantic_release]
+version_variable = [
+    'mdformat_frontmatter/__init__.py:__version__'
+]
+build_command = 'flit build'

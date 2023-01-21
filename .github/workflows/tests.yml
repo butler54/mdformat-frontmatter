@@ -73,9 +73,31 @@ jobs:
       run: |
         pre-commit run --config .pre-commit-test.yaml --all-files --verbose --show-diff-on-failure
 
+  tag_version:
+    needs: [pre-commit, tests, pre-commit-hook]
+    if: github.ref == 'refs/heads/main' && github.repository == 'butler54/mdformat-frontmatter'
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+        fetch-depth: 0
+        # needs to be a GH admins
+        token: ${{ secret.ADMIN_WRITE_PAT}}
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: Install python release tools
+      run: pip install python-semantic-release flit
+
+    - name: Release a new version to pypi
+      env:
+        PYPI_TOKEN: ${{ secrets.PYPI_KEY }}
+        GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
   publish:
     name: Publish to PyPi
-    needs: [pre-commit, tests, pre-commit-hook]
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-20.04
     steps:
