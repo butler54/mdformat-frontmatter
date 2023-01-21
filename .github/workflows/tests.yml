@@ -96,7 +96,10 @@ jobs:
       env:
         PYPI_TOKEN: ${{ secrets.PYPI_KEY }}
         GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
-      run: semantic-release publish --verbosity=DEBUG
+      run: |
+	      git config --global user.name "semantic-release (via Github actions)"
+	      git config --global user.email "semantic-release@github-actions"
+        semantic-release publish --verbosity=DEBUG
   # publish:
   #   name: Publish to PyPi
   #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
