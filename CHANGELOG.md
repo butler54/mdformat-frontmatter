@@ -2,6 +2,12 @@
 
  <!--next-version-placeholder-->
 
+## v2.0.1 (2023-01-21)
+### Fix
+* Clean pipelines to ensure no extra releases ([`3a0a97e`](https://github.com/butler54/mdformat-frontmatter/commit/3a0a97e840e4d365b97ba9909755bd181c194110))
+* Clean pipelines to ensure no extra releases ([`1dc2186`](https://github.com/butler54/mdformat-frontmatter/commit/1dc2186c2c7f7b8a84e2f1134342f38e1ce91610))
+* Clean pipelines to ensure no extra releases ([#19](https://github.com/butler54/mdformat-frontmatter/issues/19)) ([`106a22f`](https://github.com/butler54/mdformat-frontmatter/commit/106a22f52ef6919ae2e8c5029e5c7e40f529c19d))
+
 ## v2.0.0 (2023-01-21)
 
 
