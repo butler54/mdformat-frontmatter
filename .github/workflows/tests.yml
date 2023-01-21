@@ -84,7 +84,7 @@ jobs:
         submodules: true
         fetch-depth: 0
         # needs to be a GH admins
-        token: ${{ secret.ADMIN_WRITE_PAT }}
+        token: ${{ secrets.ADMIN_WRITE_PAT }}
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
