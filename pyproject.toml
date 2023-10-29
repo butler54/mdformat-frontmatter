@@ -24,7 +24,7 @@ requires=["mdformat >=0.7.16,<0.8.0",
 
 [tool.flit.metadata.requires-extra]
 test = [
-    "pytest~=6.0",
+    "pytest>=7.3",
     "coverage",
     "pytest-cov"
 ]
