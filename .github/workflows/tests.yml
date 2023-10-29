@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8, 3.11, 3.13] # sweep range of currently gaped
-        os: [ubuntu-20.04, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v3
@@ -48,7 +48,7 @@ jobs:
         pytest --cov=mdformat_frontmatter --cov-report=xml --cov-report=term-missing
 
     - name: Upload to Codecov
-      if: matrix.os == 'ubuntu-20.04' && matrix.python-version == 3.11
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.11
       uses: codecov/codecov-action@v1
       with:
         name: pytests-py3.11
