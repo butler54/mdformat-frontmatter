@@ -17,14 +17,14 @@ classifiers = [
 keywords = "mdformat,markdown,markdown-it"
 
 requires-python=">=3.7"
-requires=["mdformat >=0.7.0,<0.8.0",
-          "mdit-py-plugins",
+requires=["mdformat >=0.7.16,<0.8.0",
+          "mdit-py-plugins >=0.4.0",
           "ruamel.yaml"
             ]
 
 [tool.flit.metadata.requires-extra]
 test = [
-    "pytest~=6.0",
+    "pytest>=7.3",
     "coverage",
     "pytest-cov"
 ]

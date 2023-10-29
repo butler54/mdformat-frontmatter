@@ -4,28 +4,29 @@ on:
   push:
     branches: [main]
     tags-ignore:
-      - v*
+    - v*
   pull_request:
+    branches: [main]
 
 jobs:
 
   pre-commit:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.11
     - uses: pre-commit/action@v3.0.0
 
   tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [3.7, 3.9, 3.11]  # alter to sweep currently GA'ed versions
-        os: [ubuntu-20.04, windows-latest]
+        python-version: [3.8, 3.11, 3.12] # sweep range of currently gaped
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v3
@@ -47,16 +48,16 @@ jobs:
         pytest --cov=mdformat_frontmatter --cov-report=xml --cov-report=term-missing
 
     - name: Upload to Codecov
-      if: matrix.os == 'ubuntu-20.04' && matrix.python-version == 3.9
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.11
       uses: codecov/codecov-action@v1
       with:
-        name: pytests-py3.9
+        name: pytests-py3.11
         flags: pytests
         file: ./coverage.xml
         fail_ci_if_error: true
 
   pre-commit-hook:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -73,50 +74,50 @@ jobs:
       run: |
         pre-commit run --config .pre-commit-test.yaml --all-files --verbose --show-diff-on-failure
 
-  tag_version:
-    needs: [pre-commit, tests, pre-commit-hook]
-    if: github.ref == 'refs/heads/main' && github.repository == 'butler54/mdformat-frontmatter'
-    runs-on: ubuntu-20.04
-    steps:
-    - name: Checkout source
-      uses: actions/checkout@v3
-      with:
-        submodules: true
-        fetch-depth: 0
-        # needs to be a GH admins
-        token: ${{ secrets.ADMIN_WRITE_PAT }}
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-    - name: Install python release tools
-      run: pip install python-semantic-release flit
-
-    - name: Release a new version to pypi
-      env:
-        PYPI_TOKEN: ${{ secrets.PYPI_KEY }}
-        GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
-      run: |
-        git config --global user.name "semantic-release (via Github actions)"
-        git config --global user.email "semantic-release@github-actions"
-        semantic-release publish --verbosity=DEBUG
-  # publish:
-  #   name: Publish to PyPi
-  #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+  # tag_version:
+  #   needs: [pre-commit, tests, pre-commit-hook]
+  #   if: github.ref == 'refs/heads/main' && github.repository == 'butler54/mdformat-frontmatter'
   #   runs-on: ubuntu-20.04
   #   steps:
   #   - name: Checkout source
   #     uses: actions/checkout@v3
-  #   - name: Set up Python 3.9
-  #     uses: actions/setup-python@v1
+  #     with:
+  #       submodules: true
+  #       fetch-depth: 0
+  #       # needs to be a GH admins
+  #       token: ${{ secrets.ADMIN_WRITE_PAT }}
+  #   - name: Set up Python
+  #     uses: actions/setup-python@v4
   #     with:
   #       python-version: 3.9
-  #   - name: install flit
-  #     run: |
-  #       pip install flit~=3.0
-  #   - name: Build and publish
-  #     run: |
-  #       flit publish
+  #   - name: Install python release tools
+  #     run: pip install python-semantic-release flit
+
+  #   - name: Release a new version to pypi
   #     env:
-  #       FLIT_USERNAME: __token__
-  #       FLIT_PASSWORD: ${{ secrets.PYPI_KEY }}
+  #       PYPI_TOKEN: ${{ secrets.PYPI_KEY }}
+  #       GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
+  #     run: |
+  #       git config --global user.name "semantic-release (via Github actions)"
+  #       git config --global user.email "semantic-release@github-actions"
+  #       semantic-release publish --verbosity=DEBUG
+  # # publish:
+  # #   name: Publish to PyPi
+  # #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+  # #   runs-on: ubuntu-20.04
+  # #   steps:
+  # #   - name: Checkout source
+  # #     uses: actions/checkout@v3
+  # #   - name: Set up Python 3.9
+  # #     uses: actions/setup-python@v1
+  # #     with:
+  # #       python-version: 3.9
+  # #   - name: install flit
+  # #     run: |
+  # #       pip install flit~=3.0
+  # #   - name: Build and publish
+  # #     run: |
+  # #       flit publish
+  # #     env:
+  # #       FLIT_USERNAME: __token__
+  # #       FLIT_PASSWORD: ${{ secrets.PYPI_KEY }}
