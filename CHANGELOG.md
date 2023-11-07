@@ -2,6 +2,25 @@
 
 
 
+## v2.0.7 (2023-11-07)
+
+### Fix
+
+* fix: remove default behaviour of ruamel.yaml line breaking (#33)
+
+* fix(cicd): Correct flit behaviour to just work
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+* feat: Ensure that ruamel.yaml does not wrap lines
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+---------
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`a3ebe8a`](https://github.com/butler54/mdformat-frontmatter/commit/a3ebe8a8413640821ba7c4ca3a051a5daa5ade5b))
+
+
 ## v2.0.6 (2023-11-07)
 
 ### Fix
