@@ -3,7 +3,7 @@ requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "mdformat_frontmatter"
+name = "mdformat-frontmatter"
 authors= [ {name = "Chris Butler", email = "chris@thebutlers.me"},
 
 ]
