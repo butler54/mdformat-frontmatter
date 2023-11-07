@@ -53,5 +53,7 @@ profile = "black"
 version_variable = [
     'mdformat_frontmatter/__init__.py:__version__'
 ]
-build_command = 'flit build'
 branch = 'main'
+upload_to_pypi = false
+version_source = 'commit'
+
