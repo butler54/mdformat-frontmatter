@@ -1,6 +1,35 @@
 # CHANGELOG
 
-<!--next-version-placeholder-->
+
+
+## v2.0.3 (2023-11-07)
+
+### Fix
+
+* fix(cicd): Force a release (#30)
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`e774d35`](https://github.com/butler54/mdformat-frontmatter/commit/e774d3590e5078885b055376689d149b9f7e5492))
+
+### Unknown
+
+* lineendings (#28)
+
+* fix(cicd): line-endings
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+* fix: Correct line endings
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+* fix(cicd): Correct line endings and flit behaviour
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+---------
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`c36590f`](https://github.com/butler54/mdformat-frontmatter/commit/c36590fa61ba141ba7c95527d1778694060f7d63))
+
 
 ## v2.0.2 (2023-11-07)
 
