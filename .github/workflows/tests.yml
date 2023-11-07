@@ -99,4 +99,4 @@ jobs:
       run: |
         git config --global user.name "semantic-release (via Github actions)"
         git config --global user.email "semantic-release@github-actions"
-        semantic-release -vv publish
+        semantic-release -v version
