@@ -2,6 +2,25 @@
 
 
 
+## v2.0.8 (2023-11-07)
+
+### Fix
+
+* fix: Decrease duplication and ensure dependencies are consistenly encoded in pyproject.toml (#34)
+
+* fix: Decrease duplication and ensure dependencies are consistenly encoded in pyproject.toml
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+* fix: Improve consistency
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt;
+
+---------
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`45aabf2`](https://github.com/butler54/mdformat-frontmatter/commit/45aabf2ab6e670f6aa53ca27900ca77ef85b959e))
+
+
 ## v2.0.7 (2023-11-07)
 
 ### Fix
