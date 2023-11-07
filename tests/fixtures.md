@@ -102,3 +102,14 @@ Dont format.
 Dont format.
 ---
 .
+
+Test long line endings
+.
+---
+somethingthatis: reallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallylong
+---
+.
+---
+somethingthatis: reallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallylong
+---
+.
