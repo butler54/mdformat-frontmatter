@@ -113,3 +113,18 @@ somethingthatis: reallyreallyreallyreallyreallyreallyreallyreallyreallyreallyrea
 somethingthatis: reallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallylong
 ---
 .
+
+YAML parse error duplicate keys
+.
+---
+] This is a YAML parse error
+stuff: stuff
+stuff: stuff
+---
+.
+---
+] This is a YAML parse error
+stuff: stuff
+stuff: stuff
+---
+.
