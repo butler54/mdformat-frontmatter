@@ -41,7 +41,7 @@ jobs:
       # so that coverage will be recorded for the module
       run: |
         pip install flit
-        flit install --only-deps
+        flit install --deps=all
 
     - name: Run pytest
       run: |
