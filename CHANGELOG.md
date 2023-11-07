@@ -2,6 +2,15 @@
 
 
 
+## v2.0.6 (2023-11-07)
+
+### Fix
+
+* fix(cicd): Correct flit behaviour to just work (#32)
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`9efee45`](https://github.com/butler54/mdformat-frontmatter/commit/9efee45373cf77bdf025c6aa31f3b4a565c7565f))
+
+
 ## v2.0.5 (2023-11-07)
 
 ### Fix
