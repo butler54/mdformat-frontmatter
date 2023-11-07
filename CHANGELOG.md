@@ -2,7 +2,6 @@
 
 <!--next-version-placeholder-->
 
-
 ## v2.0.2 (2023-11-07)
 
 ### Chore
