@@ -2,6 +2,15 @@
 
 
 
+## v2.0.5 (2023-11-07)
+
+### Fix
+
+* fix(cicd): ignore line endings for now (#31)
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`2bb7170`](https://github.com/butler54/mdformat-frontmatter/commit/2bb71709dba922335530516b5353d2262d131646))
+
+
 ## v2.0.4 (2023-11-07)
 
 ### Fix
