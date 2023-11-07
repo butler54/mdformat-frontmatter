@@ -76,7 +76,7 @@ jobs:
 
   tag_github_publish:
     needs: [pre-commit, tests, pre-commit-hook]
-    if: github.ref == 'refs/heads/main' && github.repository == 'butler54/mdformat-frontmatter
+    if: github.ref == 'refs/heads/main' && github.repository == 'butler54/mdformat-frontmatter'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout source
