@@ -24,9 +24,16 @@ jobs:
     - name: Install flit
       run: |
         pip install flit>=3.9.0
+
     - name: Build and publish
       run: |
-        flit publish
+        flit publish --no-use-vcs
       env:
         FLIT_USERNAME: __token__
         FLIT_PASSWORD: ${{ secrets.PYPI_KEY }}
+
+    - name: check files
+      if: always()
+      run: |
+        ls -alh
+        ls -alh *.*
