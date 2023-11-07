@@ -2,6 +2,15 @@
 
 
 
+## v2.0.4 (2023-11-07)
+
+### Fix
+
+* fix(cicd): correct behaviour with v8 semver
+
+Signed-off-by: Chris Butler &lt;chris.butler@redhat.com&gt; ([`1491c56`](https://github.com/butler54/mdformat-frontmatter/commit/1491c56177742da7f0797c8f82229849ad589735))
+
+
 ## v2.0.3 (2023-11-07)
 
 ### Fix
