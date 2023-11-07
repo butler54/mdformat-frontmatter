@@ -1,4 +1,5 @@
 import io
+import sys
 from typing import Mapping
 
 from markdown_it import MarkdownIt
@@ -11,6 +12,7 @@ import ruamel.yaml
 yaml = ruamel.yaml.YAML()
 # Make sure to always have `sequence >= offset + 2`
 yaml.indent(mapping=2, sequence=4, offset=2)
+yaml.width = sys.maxsize
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
@@ -36,4 +38,5 @@ def _render_frontmatter(node: RenderTreeNode, context: RenderContext) -> str:
     return node.markup + "\n" + formatted_yaml + node.markup
 
 
+# apply the render function to the block identified by the mdit plugin
 RENDERERS: Mapping[str, Render] = {"front_matter": _render_frontmatter}
