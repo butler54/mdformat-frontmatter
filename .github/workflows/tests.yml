@@ -99,7 +99,7 @@ jobs:
       run: |
         git config --global user.name "semantic-release (via Github actions)"
         git config --global user.email "semantic-release@github-actions"
-        semantic-release publish --verbosity=DEBUG
+        semantic-release -vv publish
   # publish:
   #   name: Publish to PyPi
   #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
