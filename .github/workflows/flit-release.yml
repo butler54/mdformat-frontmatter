@@ -23,7 +23,8 @@ jobs:
         python-version: 3.11
     - name: Install flit
       run: |
-        pip install flit>=3.9.0
+        pip install flit
+        flit install --only-deps
 
     - name: Build and publish
       run: |

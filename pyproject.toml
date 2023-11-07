@@ -2,35 +2,47 @@
 requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
-[tool.flit.metadata]
-module = "mdformat_frontmatter"
-author = "Chris Butler"
-author-email = "chris@thebutlers.me"
-description-file = "README.md"
-home-page = "https://github.com/butler54/mdformat-frontmatter"
+[project]
+name = "mdformat_frontmatter"
+authors= [ {name = "Chris Butler", email = "chris@thebutlers.me"},
+
+]
+readme = "README.md"
+
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-keywords = "mdformat,markdown,markdown-it"
+keywords = [
+    "mdformat",
+    "markdown",
+    "markdown-it"
+]
+dynamic = ["version", "description"]
 
 requires-python=">=3.7"
-requires=["mdformat >=0.7.16,<0.8.0",
+dependencies=["mdformat >=0.7.16,<0.8.0",
           "mdit-py-plugins >=0.4.0",
           "ruamel.yaml"
             ]
-
-[tool.flit.metadata.requires-extra]
+[project.urls]
+Source = "https://github.com/butler54/mdformat-frontmatter"
+Changelog = "https://github.com/butler54/mdformat-frontmatter/blob/main/CHANGELOG.md"
+[project.optional-dependencies]
 test = [
     "pytest>=7.3",
     "coverage",
     "pytest-cov"
 ]
-dev = ["pre-commit"]
+dev = [
+    "pre-commit",
+    "python-semantic-release >=8.3.0",
+    "flit >= 3.9"
+    ]
 
-[tool.flit.entrypoints."mdformat.parser_extension"]
+[project.entry-points."mdformat.parser_extension"]
 frontmatter = "mdformat_frontmatter"
 
 [tool.flit.sdist]
