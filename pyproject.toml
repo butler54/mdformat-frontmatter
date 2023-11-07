@@ -50,9 +50,10 @@ known_first_party = ["mdformat_frontmatter", "tests"]
 profile = "black"
 
 [tool.semantic_release]
-version_variable = [
+version_variables = [
     'mdformat_frontmatter/__init__.py:__version__'
 ]
 branch = 'main'
 upload_to_pypi = false
 version_source = 'commit'
+newline_sequence = '\n'
