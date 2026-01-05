@@ -23,7 +23,7 @@ keywords = [
 dynamic = ["version", "description"]
 
 requires-python=">=3.7"
-dependencies=["mdformat >=0.7.16,<0.8.0",
+dependencies=["mdformat >=0.7.16,<1.1.0",
           "mdit-py-plugins >=0.4.0",
           "ruamel.yaml"
             ]
