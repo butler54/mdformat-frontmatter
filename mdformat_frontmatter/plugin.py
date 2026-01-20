@@ -1,13 +1,16 @@
 import io
 import sys
-from typing import Mapping
+from typing import Mapping, TYPE_CHECKING
 
 from markdown_it import MarkdownIt
-import mdformat.renderer
-from mdformat.renderer import RenderContext, RenderTreeNode
-from mdformat.renderer.typing import Render
+
 from mdit_py_plugins.front_matter import front_matter_plugin
 import ruamel.yaml
+
+if TYPE_CHECKING:
+    from mdformat.renderer import RenderContext, RenderTreeNode
+    from mdformat.renderer.typing import Render
+
 
 yaml = ruamel.yaml.YAML()
 # Make sure to always have `sequence >= offset + 2`
@@ -20,7 +23,7 @@ def update_mdit(mdit: MarkdownIt) -> None:
     mdit.use(front_matter_plugin)
 
 
-def _render_frontmatter(node: RenderTreeNode, context: RenderContext) -> str:
+def _render_frontmatter(node: "RenderTreeNode", context: "RenderContext") -> str:
     # Safety check - parse and dump yaml to ensure it is correctly formatted
     dump_stream = io.StringIO()
     try:
@@ -39,4 +42,4 @@ def _render_frontmatter(node: RenderTreeNode, context: RenderContext) -> str:
 
 
 # apply the render function to the block identified by the mdit plugin
-RENDERERS: Mapping[str, Render] = {"front_matter": _render_frontmatter}
+RENDERERS: Mapping[str, "Render"] = {"front_matter": _render_frontmatter}
