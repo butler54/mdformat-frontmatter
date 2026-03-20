@@ -10,6 +10,7 @@ from mdit_py_plugins.front_matter import front_matter_plugin
 import ruamel.yaml
 
 yaml = ruamel.yaml.YAML()
+yaml.preserve_quotes = True
 # Make sure to always have `sequence >= offset + 2`
 yaml.indent(mapping=2, sequence=4, offset=2)
 yaml.width = sys.maxsize
