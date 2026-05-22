@@ -130,3 +130,15 @@ dmypy.json
 
 # VS Code
 .vscode/
+
+# macOS
+.DS_Store
+
+# Jupyter
+*.ipynb
+
+# Node modules (for commitlint)
+node_modules/
+
+# Claude Code
+.claude/

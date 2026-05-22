@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from markdown_it.utils import read_fixture_file
 import mdformat
 import pytest
+from markdown_it.utils import read_fixture_file
 
 FIXTURE_PATH = Path(__file__).parent / "fixtures.md"
 SIMPLE_MD_TEST_PATH = Path(__file__).parent / "simple-md-test.md"

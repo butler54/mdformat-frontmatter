@@ -3,101 +3,80 @@ name: CI
 on:
   push:
     branches: [main]
-    tags-ignore:
-    - v*
   pull_request:
     branches: [main]
 
-jobs:
+permissions: read-all
 
+jobs:
   pre-commit:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Harden runner
+      uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
       with:
-        python-version: 3.11
-    - uses: pre-commit/action@v3.0.0
+        egress-policy: audit
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        persist-credentials: false
+    - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      with:
+        python-version: "3.12"
+    - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
 
   tests:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
     strategy:
       matrix:
-        python-version: [3.8, 3.11, 3.12] # sweep range of currently gaped
+        python-version: ["3.10", "3.12", "3.13"]
         os: [ubuntu-latest, windows-latest, macos-latest]
-
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+    - name: Harden runner
+      uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+      with:
+        egress-policy: audit
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        persist-credentials: false
+    - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
       with:
         python-version: ${{ matrix.python-version }}
-
-    - name: Installation (deps and package)
-      # we install with flit --pth-file,
-      # so that coverage will be recorded for the module
+    - name: Install dependencies
       run: |
-        pip install flit
-        flit install --deps=all
-
+        pip install .[test]
     - name: Run pytest
-      run: |
-        pytest --cov=mdformat_frontmatter --cov-report=xml --cov-report=term-missing
-
+      run: pytest --cov=mdformat_frontmatter --cov-report=xml --cov-report=term-missing
     - name: Upload to Codecov
-      if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.11
-      uses: codecov/codecov-action@v1
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+      uses: codecov/codecov-action@8dc99e6319b6c0f14f0ca5fe18c55b67fd1b1cd9 # v5.3.1
       with:
-        name: pytests-py3.11
+        name: pytests-py3.12
         flags: pytests
         file: ./coverage.xml
         fail_ci_if_error: true
 
   pre-commit-hook:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Harden runner
+      uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
       with:
-        python-version: 3.11
-
-    - name: Installation (deps and package)
+        egress-policy: audit
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        persist-credentials: false
+    - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      with:
+        python-version: "3.12"
+    - name: Install
       run: |
         pip install pre-commit
         pip install .
-
-    - name: run pre-commit with plugin
-      run: |
-        pre-commit run --config .pre-commit-test.yaml --all-files --verbose --show-diff-on-failure
-
-  tag_github_publish:
-    needs: [pre-commit, tests, pre-commit-hook]
-    if: github.ref == 'refs/heads/main' && github.repository == 'butler54/mdformat-frontmatter'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout source
-      uses: actions/checkout@v4
-      with:
-        submodules: true
-        fetch-depth: 0
-        # needs to be a GH admins
-        token: ${{ secrets.ADMIN_WRITE_PAT }}
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
-    - name: Install python release tools
-      run: pip install python-semantic-release flit
-
-    - name: Release a new version to github
-      env:
-        GH_TOKEN: ${{ secrets.ADMIN_WRITE_PAT }}
-      run: |
-        git config --global user.name "semantic-release (via Github actions)"
-        git config --global user.email "semantic-release@github-actions"
-        git config --global core.eol lf
-        semantic-release -v version
+    - name: Run pre-commit with plugin
+      run: pre-commit run --config .pre-commit-test.yaml --all-files --verbose --show-diff-on-failure

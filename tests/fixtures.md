@@ -128,3 +128,22 @@ stuff: stuff
 stuff: stuff
 ---
 .
+
+Preserve YAML string quotes
+.
+---
+name: "quoted value"
+unquoted: value
+single: 'single quoted'
+---
+
+Content here.
+.
+---
+name: "quoted value"
+unquoted: value
+single: 'single quoted'
+---
+
+Content here.
+.
