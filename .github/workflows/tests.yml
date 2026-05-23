@@ -56,7 +56,7 @@ jobs:
       with:
         name: pytests-py3.12
         flags: pytests
-        file: ./coverage.xml
+        files: ./coverage.xml
         fail_ci_if_error: true
 
   pre-commit-hook:
