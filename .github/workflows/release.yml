@@ -30,7 +30,7 @@ jobs:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       with:
         fetch-depth: 0
-        token: ${{ secrets.ADMIN_WRITE_PAT }}
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
       with:
@@ -43,7 +43,7 @@ jobs:
       id: release
       uses: python-semantic-release/python-semantic-release@350c48fcb3ffcdfd2e0a235206bc2ecea6b69df0 # v10.5.3
       with:
-        github_token: ${{ secrets.ADMIN_WRITE_PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # release/v1
@@ -59,4 +59,4 @@ jobs:
       uses: python-semantic-release/upload-to-gh-release@0a92b5d7ebfc15a84f9801ebd1bf706343d43711 # v9.8.9
       if: steps.release.outputs.released == 'true'
       with:
-        github_token: ${{ secrets.ADMIN_WRITE_PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
