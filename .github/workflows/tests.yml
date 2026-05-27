@@ -52,7 +52,7 @@ jobs:
       run: pytest --cov=mdformat_frontmatter --cov-report=xml --cov-report=term-missing
     - name: Upload to Codecov
       if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
-      uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5.3.1
+      uses: codecov/codecov-action@e79a6962e0d4c0c17b229090214935d2e33f8354 # v6.0.1
       with:
         name: pytests-py3.12
         flags: pytests
