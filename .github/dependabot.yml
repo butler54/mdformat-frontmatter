@@ -11,9 +11,27 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "chore"
+    groups:
+      github-actions:
+        patterns: ["*"]
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
     commit-message:
       prefix: "chore"
+    # Raise the minimum version bounds (>=) in pyproject.toml so that the
+    # supported dependency minimums track the latest releases.
+    versioning-strategy: "increase"
+    groups:
+      python-dependencies:
+        patterns: ["*"]
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore"
+    groups:
+      pre-commit-hooks:
+        patterns: ["*"]
