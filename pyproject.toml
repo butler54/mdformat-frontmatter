@@ -28,22 +28,22 @@ dynamic = ["version"]
 
 requires-python = ">=3.10"
 dependencies = [
-    "mdformat >=0.7.16",
-    "mdit-py-plugins >=0.4.0",
-    "ruamel.yaml>=0.15"
+    "mdformat >=1.0.0",
+    "mdit-py-plugins >=0.6.1",
+    "ruamel.yaml>=0.19.1"
 ]
 [project.urls]
 Source = "https://github.com/butler54/mdformat-frontmatter"
 Changelog = "https://github.com/butler54/mdformat-frontmatter/blob/main/CHANGELOG.md"
 [project.optional-dependencies]
 test = [
-    "pytest>=7.3",
+    "pytest>=9.1.1",
     "coverage",
     "pytest-cov"
 ]
 dev = [
     "pre-commit",
-    "python-semantic-release>=10.4.0"
+    "python-semantic-release>=10.7.0"
 ]
 
 [project.entry-points."mdformat.parser_extension"]
